@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ToDo Manager</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="container header-content">
+                <h1 class="app-title">ToDo Manager</h1>
+                <nav class="user-nav">
+                    @if (User.Identity?.IsAuthenticated == true)
+                    {
+                        <span class="user-greeting">Hello, @User.Identity.Name</span>
+                        <form asp-controller="Home" asp-action="Logout" method="post" class="logout-form">
+                            <button type="submit" class="btn btn-logout">Logout</button>
+                        </form>
+                    }
+                    else
+                    {
+                        <a asp-controller="Home" asp-action="Login" class="btn btn-auth">Login</a>
+                        <a asp-controller="Home" asp-action="Register" class="btn btn-auth btn-auth-register">Register</a>
+                    }
+                </nav>
+            </div>
+        </header>
+
+        <main class="container">
+            @RenderBody()
+        </main>
+    </div>
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

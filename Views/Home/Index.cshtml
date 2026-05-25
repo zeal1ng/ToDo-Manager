@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "My Tasks";
+}
+
+<div class="todo-container">
+    <div class="todo-card">
+        <h2 class="todo-heading">My Tasks</h2>
+
+        <div class="add-task">
+            <input type="text" id="taskInput" class="task-input" placeholder="Add a new task..." />
+            <button id="addBtn" class="btn btn-add">Add</button>
+        </div>
+
+        <ul class="task-list" id="taskList">
+        </ul>
+
+        <div class="todo-footer">
+            <span id="taskCount">0 tasks</span>
+            <button id="clearBtn" class="btn btn-clear">Clear Completed</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,109 @@
+D:\college\ToDo Manager\bin\Debug\net10.0\appsettings.Development.json
+D:\college\ToDo Manager\bin\Debug\net10.0\appsettings.json
+D:\college\ToDo Manager\bin\Debug\net10.0\ToDo Manager.staticwebassets.runtime.json
+D:\college\ToDo Manager\bin\Debug\net10.0\ToDo Manager.staticwebassets.endpoints.json
+D:\college\ToDo Manager\bin\Debug\net10.0\ToDo Manager.exe
+D:\college\ToDo Manager\bin\Debug\net10.0\ToDo Manager.deps.json
+D:\college\ToDo Manager\bin\Debug\net10.0\ToDo Manager.runtimeconfig.json
+D:\college\ToDo Manager\bin\Debug\net10.0\ToDo Manager.dll
+D:\college\ToDo Manager\bin\Debug\net10.0\ToDo Manager.pdb
+D:\college\ToDo Manager\obj\Debug\net10.0\rpswa.dswa.cache.json
+D:\college\ToDo Manager\obj\Debug\net10.0\ToDo Manager.GeneratedMSBuildEditorConfig.editorconfig
+D:\college\ToDo Manager\obj\Debug\net10.0\ToDo Manager.AssemblyInfoInputs.cache
+D:\college\ToDo Manager\obj\Debug\net10.0\ToDo Manager.AssemblyInfo.cs
+D:\college\ToDo Manager\obj\Debug\net10.0\ToDo Manager.csproj.CoreCompileInputs.cache
+D:\college\ToDo Manager\obj\Debug\net10.0\ToDo Manager.MvcApplicationPartsAssemblyInfo.cache
+D:\college\ToDo Manager\obj\Debug\net10.0\ToDo Manager.RazorAssemblyInfo.cache
+D:\college\ToDo Manager\obj\Debug\net10.0\ToDo Manager.RazorAssemblyInfo.cs
+D:\college\ToDo Manager\obj\Debug\net10.0\rjimswa.dswa.cache.json
+D:\college\ToDo Manager\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
+D:\college\ToDo Manager\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
+D:\college\ToDo Manager\obj\Debug\net10.0\scopedcss\bundle\ToDo Manager.styles.css
+D:\college\ToDo Manager\obj\Debug\net10.0\compressed\mxkgoxk1c3-{0}-61n19gt1b8-61n19gt1b8.gz
+D:\college\ToDo Manager\obj\Debug\net10.0\compressed\vcr6k9uk4c-{0}-bqjiyaj88i-bqjiyaj88i.gz
+D:\college\ToDo Manager\obj\Debug\net10.0\compressed\uc8f2h9m6n-{0}-c2jlpeoesf-c2jlpeoesf.gz
+D:\college\ToDo Manager\obj\Debug\net10.0\compressed\gh0ivg91jh-{0}-erw9l3u2r3-erw9l3u2r3.gz
+D:\college\ToDo Manager\obj\Debug\net10.0\compressed\o59cv1doh3-{0}-aexeepp0ev-aexeepp0ev.gz
+D:\college\ToDo Manager\obj\Debug\net10.0\compressed\wb45yv1686-{0}-d7shbmvgxk-d7shbmvgxk.gz
+D:\college\ToDo Manager\obj\Debug\net10.0\compressed\9870csntu8-{0}-ausgxo2sd3-ausgxo2sd3.gz
+D:\college\ToDo Manager\obj\Debug\net10.0\compressed\lmyk6gdawg-{0}-k8d9w2qqmf-k8d9w2qqmf.gz
+D:\college\ToDo Manager\obj\Debug\net10.0\compressed\3mot3l5huh-{0}-cosvhxvwiu-cosvhxvwiu.gz
+D:\college\ToDo Manager\obj\Debug\net10.0\compressed\znxkf1dol2-{0}-ub07r2b239-ub07r2b239.gz
+D:\college\ToDo Manager\obj\Debug\net10.0\compressed\u637ksbcnt-{0}-fvhpjtyr6v-fvhpjtyr6v.gz
+D:\college\ToDo Manager\obj\Debug\net10.0\compressed\g2guoyo4bu-{0}-b7pk76d08c-b7pk76d08c.gz
+D:\college\ToDo Manager\obj\Debug\net10.0\compressed\rmqzbfk8ew-{0}-fsbi9cje9m-fsbi9cje9m.gz
+D:\college\ToDo Manager\obj\Debug\net10.0\compressed\jcuy6qf1e1-{0}-rzd6atqjts-rzd6atqjts.gz
+D:\college\ToDo Manager\obj\Debug\net10.0\compressed\g00qzbgyvz-{0}-ee0r1s7dh0-ee0r1s7dh0.gz
+D:\college\ToDo Manager\obj\Debug\net10.0\compressed\joy76iltv3-{0}-dxx9fxp4il-dxx9fxp4il.gz
+D:\college\ToDo Manager\obj\Debug\net10.0\compressed\xdsulukmyh-{0}-jd9uben2k1-jd9uben2k1.gz
+D:\college\ToDo Manager\obj\Debug\net10.0\compressed\ysq8y1bv0m-{0}-khv3u5hwcm-khv3u5hwcm.gz
+D:\college\ToDo Manager\obj\Debug\net10.0\compressed\kn5icjjxec-{0}-r4e9w2rdcm-r4e9w2rdcm.gz
+D:\college\ToDo Manager\obj\Debug\net10.0\compressed\g56itbsvsb-{0}-lcd1t2u6c8-lcd1t2u6c8.gz
+D:\college\ToDo Manager\obj\Debug\net10.0\compressed\3iuvw83id2-{0}-c2oey78nd0-c2oey78nd0.gz
+D:\college\ToDo Manager\obj\Debug\net10.0\compressed\zhwnnn44yn-{0}-tdbxkamptv-tdbxkamptv.gz
+D:\college\ToDo Manager\obj\Debug\net10.0\compressed\7a9zzt6cc1-{0}-j5mq2jizvt-j5mq2jizvt.gz
+D:\college\ToDo Manager\obj\Debug\net10.0\compressed\s95kgfdf2n-{0}-06098lyss8-06098lyss8.gz
+D:\college\ToDo Manager\obj\Debug\net10.0\compressed\kjxja55ukx-{0}-nvvlpmu67g-nvvlpmu67g.gz
+D:\college\ToDo Manager\obj\Debug\net10.0\compressed\o5qtf437le-{0}-s35ty4nyc5-s35ty4nyc5.gz
+D:\college\ToDo Manager\obj\Debug\net10.0\compressed\dlrx4ss718-{0}-pj5nd1wqec-pj5nd1wqec.gz
+D:\college\ToDo Manager\obj\Debug\net10.0\compressed\tik23z69s6-{0}-46ein0sx1k-46ein0sx1k.gz
+D:\college\ToDo Manager\obj\Debug\net10.0\compressed\pkbo71kfu7-{0}-v0zj4ognzu-v0zj4ognzu.gz
+D:\college\ToDo Manager\obj\Debug\net10.0\compressed\wjofa1r287-{0}-37tfw0ft22-37tfw0ft22.gz
+D:\college\ToDo Manager\obj\Debug\net10.0\compressed\u42lom5ihs-{0}-hrwsygsryq-hrwsygsryq.gz
+D:\college\ToDo Manager\obj\Debug\net10.0\compressed\8upixwh6js-{0}-pk9g2wxc8p-pk9g2wxc8p.gz
+D:\college\ToDo Manager\obj\Debug\net10.0\compressed\yjkrxtzzzr-{0}-ft3s53vfgj-ft3s53vfgj.gz
+D:\college\ToDo Manager\obj\Debug\net10.0\compressed\ldl2u2iw6l-{0}-6cfz1n2cew-6cfz1n2cew.gz
+D:\college\ToDo Manager\obj\Debug\net10.0\compressed\32ndsk2yp7-{0}-6pdc2jztkx-6pdc2jztkx.gz
+D:\college\ToDo Manager\obj\Debug\net10.0\compressed\go72q9fif6-{0}-493y06b0oq-493y06b0oq.gz
+D:\college\ToDo Manager\obj\Debug\net10.0\compressed\aciw40o4ni-{0}-iovd86k7lj-iovd86k7lj.gz
+D:\college\ToDo Manager\obj\Debug\net10.0\compressed\tr9p0tbp36-{0}-vr1egmr9el-vr1egmr9el.gz
+D:\college\ToDo Manager\obj\Debug\net10.0\compressed\kas12v920v-{0}-kbrnm935zg-kbrnm935zg.gz
+D:\college\ToDo Manager\obj\Debug\net10.0\compressed\lo1ejr9ktw-{0}-jj8uyg4cgr-jj8uyg4cgr.gz
+D:\college\ToDo Manager\obj\Debug\net10.0\compressed\4eohgfqjww-{0}-y7v9cxd14o-y7v9cxd14o.gz
+D:\college\ToDo Manager\obj\Debug\net10.0\compressed\4k93xccqet-{0}-notf2xhcfb-notf2xhcfb.gz
+D:\college\ToDo Manager\obj\Debug\net10.0\compressed\wptf74lw8a-{0}-h1s4sie4z3-h1s4sie4z3.gz
+D:\college\ToDo Manager\obj\Debug\net10.0\compressed\9a533po6a6-{0}-63fj8s7r0e-63fj8s7r0e.gz
+D:\college\ToDo Manager\obj\Debug\net10.0\compressed\y6zibxj4cq-{0}-0j3bgjxly4-0j3bgjxly4.gz
+D:\college\ToDo Manager\obj\Debug\net10.0\compressed\duqfl5f0yg-{0}-47otxtyo56-47otxtyo56.gz
+D:\college\ToDo Manager\obj\Debug\net10.0\compressed\p7370fx703-{0}-4v8eqarkd7-4v8eqarkd7.gz
+D:\college\ToDo Manager\obj\Debug\net10.0\compressed\84krti7o8i-{0}-356vix0kms-356vix0kms.gz
+D:\college\ToDo Manager\obj\Debug\net10.0\compressed\9pvtjka2w6-{0}-83jwlth58m-83jwlth58m.gz
+D:\college\ToDo Manager\obj\Debug\net10.0\compressed\a0ysihktbn-{0}-mrlpezrjn3-mrlpezrjn3.gz
+D:\college\ToDo Manager\obj\Debug\net10.0\compressed\k593kl71ei-{0}-lzl9nlhx6b-lzl9nlhx6b.gz
+D:\college\ToDo Manager\obj\Debug\net10.0\compressed\xc5u0dn6pw-{0}-ag7o75518u-ag7o75518u.gz
+D:\college\ToDo Manager\obj\Debug\net10.0\compressed\grwglnsx9o-{0}-x0q3zqp4vz-x0q3zqp4vz.gz
+D:\college\ToDo Manager\obj\Debug\net10.0\compressed\mmgvhcwe4r-{0}-0i3buxo5is-0i3buxo5is.gz
+D:\college\ToDo Manager\obj\Debug\net10.0\compressed\uh8o3iq8uq-{0}-o1o13a6vjx-o1o13a6vjx.gz
+D:\college\ToDo Manager\obj\Debug\net10.0\compressed\3to88h6k9n-{0}-ttgo8qnofa-ttgo8qnofa.gz
+D:\college\ToDo Manager\obj\Debug\net10.0\compressed\eji4jqmquz-{0}-2z0ns9nrw6-2z0ns9nrw6.gz
+D:\college\ToDo Manager\obj\Debug\net10.0\compressed\ypb8ohbvf3-{0}-muycvpuwrr-muycvpuwrr.gz
+D:\college\ToDo Manager\obj\Debug\net10.0\compressed\61nmgm2908-{0}-87fc7y1x7t-87fc7y1x7t.gz
+D:\college\ToDo Manager\obj\Debug\net10.0\compressed\fzfcsk7dl4-{0}-mlv21k5csn-mlv21k5csn.gz
+D:\college\ToDo Manager\obj\Debug\net10.0\staticwebassets.build.json
+D:\college\ToDo Manager\obj\Debug\net10.0\staticwebassets.build.json.cache
+D:\college\ToDo Manager\obj\Debug\net10.0\staticwebassets.development.json
+D:\college\ToDo Manager\obj\Debug\net10.0\staticwebassets.build.endpoints.json
+D:\college\ToDo Manager\obj\Debug\net10.0\swae.build.ex.cache
+D:\college\ToDo Manager\obj\Debug\net10.0\ToDo Manager.dll
+D:\college\ToDo Manager\obj\Debug\net10.0\refint\ToDo Manager.dll
+D:\college\ToDo Manager\obj\Debug\net10.0\ToDo Manager.pdb
+D:\college\ToDo Manager\obj\Debug\net10.0\ToDo Manager.genruntimeconfig.cache
+D:\college\ToDo Manager\obj\Debug\net10.0\ref\ToDo Manager.dll
+D:\college\ToDo Manager\obj\Debug\net10.0\compressed\shqgvirmxr-{0}-0yb28qcc8t-0yb28qcc8t.gz
+D:\college\ToDo Manager\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.dll
+D:\college\ToDo Manager\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\college\ToDo Manager\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.Relational.dll
+D:\college\ToDo Manager\bin\Debug\net10.0\Npgsql.dll
+D:\college\ToDo Manager\bin\Debug\net10.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+D:\college\ToDo Manager\obj\Debug\net10.0\ToDo Manager.csproj.AssemblyReference.cache
+D:\college\ToDo Manager\obj\Debug\net10.0\ToDo Man.4C567995.Up2Date
+D:\college\ToDo Manager\bin\Debug\net10.0\BCrypt-Net-Next.dll
+D:\college\ToDo Manager\bin\Debug\net10.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\college\ToDo Manager\bin\Debug\net10.0\Microsoft.IdentityModel.Abstractions.dll
+D:\college\ToDo Manager\bin\Debug\net10.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\college\ToDo Manager\bin\Debug\net10.0\Microsoft.IdentityModel.Logging.dll
+D:\college\ToDo Manager\bin\Debug\net10.0\Microsoft.IdentityModel.Protocols.dll
+D:\college\ToDo Manager\bin\Debug\net10.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\college\ToDo Manager\bin\Debug\net10.0\Microsoft.IdentityModel.Tokens.dll
+D:\college\ToDo Manager\bin\Debug\net10.0\System.IdentityModel.Tokens.Jwt.dll
+D:\college\ToDo Manager\obj\Debug\net10.0\compressed\1b29svwvw1-{0}-w783o0nwg8-w783o0nwg8.gz
