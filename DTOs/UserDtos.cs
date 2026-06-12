@@ -15,6 +15,7 @@ public class RegisterUserDto
 
     [Required, MinLength(6)]
     public string Password { get; set; } = null!;
+    public int UserRole { get; set; }
 }
 
 public class LoginUserDto
@@ -24,4 +25,5 @@ public class LoginUserDto
 
     [Required]
     public string Password { get; set; } = null!;
+    public int UserRole { get; set; }
 }

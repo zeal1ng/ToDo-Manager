@@ -1,7 +1,7 @@
 namespace ToDo_Manager.Models;
 
 public enum Status { Completed, Incompleted }
-public class Task
+public class UserTask
 {
     public int Id { get; set; }
     public string Title { get; set; } = null!;

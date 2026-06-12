@@ -2,21 +2,78 @@
     ViewData["Title"] = "My Tasks";
 }
 
-<div class="todo-container">
-    <div class="todo-card">
-        <h2 class="todo-heading">My Tasks</h2>
-
-        <div class="add-task">
-            <input type="text" id="taskInput" class="task-input" placeholder="Add a new task..." />
-            <button id="addBtn" class="btn btn-add">Add</button>
+<div class="app-layout">
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-section">
+            <div class="sidebar-user" id="myUserBtn" data-user-id="">
+                <div class="sidebar-user-name">@User.Identity?.Name</div>
+                <div class="sidebar-user-stats" id="myStats">-</div>
+            </div>
         </div>
+        @if (User.IsInRole("Admin"))
+        {
+            <div class="sidebar-section">
+                <div class="sidebar-section-title">Employees</div>
+                <div class="sidebar-user-list" id="userList"></div>
+                <button class="btn btn-sidebar" id="addUserBtn">+ Add Employee</button>
+            </div>
+        }
+    </aside>
+    <main class="main-content">
+        <div class="todo-container">
+            <div class="todo-card">
+                <h2 class="todo-heading" id="pageHeading">My Tasks</h2>
 
-        <ul class="task-list" id="taskList">
-        </ul>
+                <div class="add-task">
+                    <input type="text" id="taskInput" class="task-input" placeholder="Add a new task..." />
+                    <button id="addBtn" class="btn btn-add">Add</button>
+                </div>
 
-        <div class="todo-footer">
-            <span id="taskCount">0 tasks</span>
-            <button id="clearBtn" class="btn btn-clear">Clear Completed</button>
+                <ul class="task-list" id="taskList">
+                </ul>
+
+                <div class="todo-footer">
+                    <span id="taskCount">0 tasks</span>
+                    <button id="clearBtn" class="btn btn-clear">Clear Completed</button>
+                </div>
+            </div>
         </div>
-    </div>
+    </main>
+    <aside class="right-panel">
+        <div class="stats-card">
+            <div class="stats-header">
+                <h3 class="stats-title">Task Stats</h3>
+                <div class="stats-range">
+                    <button class="range-btn active" data-days="7">7d</button>
+                    <button class="range-btn" data-days="30">30d</button>
+                    <button class="range-btn" data-days="90">90d</button>
+                </div>
+            </div>
+            <div class="chart-wrapper">
+                <canvas id="statsChart"></canvas>
+            </div>
+            <div class="stats-summary" id="statsSummary">
+                <div class="stat-item">
+                    <span class="stat-dot created"></span>
+                    <span>Created: <strong id="statCreated">0</strong></span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-dot completed"></span>
+                    <span>Completed: <strong id="statCompleted">0</strong></span>
+                </div>
+            </div>
+        </div>
+    </aside>
 </div>
+
+@if (User.Identity?.IsAuthenticated == true)
+{
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script>
+    window.__user = {
+        id: @User.FindFirstValue(ClaimTypes.NameIdentifier),
+        name: '@User.Identity.Name',
+        role: '@User.FindFirstValue(ClaimTypes.Role)'
+    };
+</script>
+}

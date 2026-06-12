@@ -1,6 +1,6 @@
 namespace ToDo_Manager.DTOs;
 
-public class TaskDto
+public class UserTaskDto
 {
     public int Id { get; set; }
     public string Title { get; set; } = null!;
@@ -10,13 +10,22 @@ public class TaskDto
     public DateTime? CompletedAt { get; set; }
 }
 
-public class CreateTaskDto
+public class CreateUserTaskDto
 {
     public string Title { get; set; } = null!;
     public string Body { get; set; } = null!;
+    public int UserId { get; set; }
 }
 
-public class UpdateTaskDto
+public class GetUserTaskDto
+{
+    public string Title { get; set; } = null!;
+    public string Body { get; set; } = null;
+    public DateTime CreatedAt { get; set; }
+    public DateTime? CompletedAt { get; set; }
+}
+
+public class UpdateUserTaskDto
 {
     public string? Title { get; set; }
     public string? Body { get; set; }

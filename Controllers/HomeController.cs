@@ -19,6 +19,8 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+        if (User.Identity?.IsAuthenticated != true)
+            return RedirectToAction("Login");
         return View();
     }
 
@@ -26,6 +28,28 @@ public class HomeController : Controller
     public IActionResult Register()
     {
         return View();
+    }
+    
+    [HttpPost]
+    public async Task<IActionResult> Register(RegisterUserDto model)
+    {
+        if (!ModelState.IsValid) return View(model);
+        if (await _context.Users.AnyAsync(u => u.UserName == model.UserName))
+        {
+            ModelState.AddModelError("", "Username already exists");
+            return View(model);
+        }
+        var user = new User
+        {
+            UserName = model.UserName,
+            PasswordHash = PasswordService.Hash(model.Password),
+            UserRole = UserRole.Master
+        };
+        _context.Users.Add(user);
+        await _context.SaveChangesAsync();
+        var token = _tokenService.CreateToken(user);
+        Response.Cookies.Append("jwt", token, new CookieOptions { HttpOnly = true });
+        return RedirectToAction("Index");
     }
 
 
@@ -35,5 +59,26 @@ public class HomeController : Controller
         return View();
     }
 
+    [HttpPost]
+    public async Task<IActionResult> Login(LoginUserDto model)
+    {
+        if (!ModelState.IsValid) return View(model);
+        var user = await _context.Users.FirstOrDefaultAsync(u => u.UserName == model.UserName);
+        if (user == null || !PasswordService.Verify(model.Password, user.PasswordHash))
+        {
+            ModelState.AddModelError("", "Invalid username or password");
+            return View(model);
+        }
+        var token = _tokenService.CreateToken(user);
+        Response.Cookies.Append("jwt", token, new CookieOptions { HttpOnly = true });
+        return RedirectToAction("Index");
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Logout()
+    {
+        Response.Cookies.Delete("jwt");
+        return RedirectToAction("Index");
+    }
 
 }

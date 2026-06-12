@@ -17,6 +17,12 @@
                         <span class="user-greeting">Hello, @User.Identity.Name</span>
                         <form asp-controller="Home" asp-action="Logout" method="post" class="logout-form">
                             <button type="submit" class="btn btn-logout">Logout</button>
+
+                            @* @section Scripts {
+                                <script>
+                                    document.cookie = "jwt" + "=; path=/; max-age=-1";
+                                </script>
+                            } *@
                         </form>
                     }
                     else

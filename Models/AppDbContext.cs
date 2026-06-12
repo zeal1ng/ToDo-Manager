@@ -7,7 +7,7 @@ namespace ToDo_Manager.Models;
 public class AppDbContext : DbContext
 {
     public DbSet<User> Users { get; set; }
-    public DbSet<Task> Tasks { get; set; }
+    public DbSet<UserTask> UserTasks { get; set; }
 
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
     {
@@ -15,15 +15,16 @@ public class AppDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Task>().Property(t => t.Status)
+        modelBuilder.Entity<UserTask>().Property(t => t.Status)
             .HasConversion<string>()
             .HasDefaultValue(Status.Incompleted);
-            base.OnModelCreating(modelBuilder);
 
-        modelBuilder.Entity<Task>()
+        modelBuilder.Entity<UserTask>()
             .HasOne(t => t.User)
             .WithMany(u => u.Tasks)
             .HasForeignKey(t => t.UserId)
             .OnDelete(DeleteBehavior.SetNull);
+
+        base.OnModelCreating(modelBuilder);
     }
 }
