@@ -37,6 +37,7 @@ namespace ToDo_Manager.Migrations
                     Body = table.Column<string>(type: "text", nullable: false),
                     UserId = table.Column<int>(type: "integer", nullable: false),
                     Status = table.Column<string>(type: "text", nullable: false, defaultValue: "Incompleted"),
+                    Priority = table.Column<string>(type: "text", nullable: false, defaultValue: "Normal"),
                     CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     CompletedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
                 },

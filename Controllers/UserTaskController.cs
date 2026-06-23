@@ -25,23 +25,29 @@ public class UserTaskController : ControllerBase
     private bool IsAdmin() => User.IsInRole("Admin");
 
     [HttpGet]
-    public async Task<ActionResult<List<UserTaskDto>>> GetTasks()
+    public async Task<ActionResult<List<UserTaskDto>>> GetTasks([FromQuery] int? categoryId)
     {
         var userId = GetUserId();
-        return await GetTasksForUser(userId);
+        return await GetTasksForUser(userId, categoryId);
     }
 
     [Authorize(Roles = "Admin")]
     [HttpGet("user/{userId}")]
-    public async Task<ActionResult<List<UserTaskDto>>> GetUserTasks(int userId)
+    public async Task<ActionResult<List<UserTaskDto>>> GetUserTasks(int userId, [FromQuery] int? categoryId)
     {
-        return await GetTasksForUser(userId);
+        return await GetTasksForUser(userId, categoryId);
     }
 
-    private async Task<ActionResult<List<UserTaskDto>>> GetTasksForUser(int userId)
+    private async Task<ActionResult<List<UserTaskDto>>> GetTasksForUser(int userId, int? categoryId = null)
     {
-        var tasks = await _context.UserTasks
-            .Where(t => t.UserId == userId)
+        var query = _context.UserTasks
+            .Include(t => t.Category)
+            .Where(t => t.UserId == userId);
+
+        if (categoryId.HasValue)
+            query = query.Where(t => t.CategoryId == categoryId.Value);
+
+        var tasks = await query
             .OrderByDescending(t => t.CreatedAt)
             .Select(t => new UserTaskDto
             {
@@ -49,6 +55,9 @@ public class UserTaskController : ControllerBase
                 Title = t.Title,
                 Body = t.Body,
                 Status = t.Status.ToString(),
+                Priority = t.Priority.ToString(),
+                CategoryId = t.CategoryId,
+                CategoryName = t.Category != null ? t.Category.Name : null,
                 CreatedAt = t.CreatedAt,
                 CompletedAt = t.CompletedAt
             })
@@ -70,18 +79,22 @@ public class UserTaskController : ControllerBase
             Body = dto.Body ?? string.Empty,
             UserId = userId,
             CreatedAt = DateTime.UtcNow,
-            Status = Status.Incompleted
+            Status = Status.Incompleted,
+            Priority = dto.Priority == "Urgent" ? Priority.Urgent : Priority.Normal,
+            CategoryId = dto.CategoryId
         };
 
         _context.UserTasks.Add(task);
         await _context.SaveChangesAsync();
 
-        return CreatedAtAction(nameof(GetTasks), new UserTaskDto
+        return CreatedAtAction(nameof(GetTasks), null, new UserTaskDto
         {
             Id = task.Id,
             Title = task.Title,
             Body = task.Body,
             Status = task.Status.ToString(),
+            Priority = task.Priority.ToString(),
+            CategoryId = task.CategoryId,
             CreatedAt = task.CreatedAt,
             CompletedAt = task.CompletedAt
         });
@@ -102,6 +115,10 @@ public class UserTaskController : ControllerBase
             task.Status = dto.Status == "Completed" ? Status.Completed : Status.Incompleted;
             task.CompletedAt = task.Status == Status.Completed ? DateTime.UtcNow : null;
         }
+        if (dto.Priority != null)
+            task.Priority = dto.Priority == "Urgent" ? Priority.Urgent : Priority.Normal;
+        if (dto.CategoryId.HasValue)
+            task.CategoryId = dto.CategoryId.Value > 0 ? dto.CategoryId : null;
 
         await _context.SaveChangesAsync();
         return Ok();

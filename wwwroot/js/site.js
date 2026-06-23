@@ -15,12 +15,16 @@
     let users = [];
     let chart = null;
     let chartDays = 7;
+    let categories = [];
+    let selectedCategoryId = null;
     const chartCanvas = document.getElementById('statsChart');
 
     async function loadTasks() {
-        const url = selectedUserId
+        var url = selectedUserId
             ? '/api/usertask/user/' + selectedUserId
             : '/api/usertask';
+        if (selectedCategoryId)
+            url += (url.indexOf('?') > -1 ? '&' : '?') + 'categoryId=' + selectedCategoryId;
         try {
             const res = await fetch(url, { credentials: 'include' });
             if (!res.ok) { tasks = []; render(); return; }
@@ -42,11 +46,63 @@
         } catch {}
     }
 
+    async function loadCategories() {
+        var url = '/api/category';
+        if (user.role === 'Admin' && selectedUserId)
+            url += '?userId=' + selectedUserId;
+        try {
+            const res = await fetch(url, { credentials: 'include' });
+            if (!res.ok) return;
+            categories = await res.json();
+            renderCategoryFilter();
+            renderCategoryList();
+            renderCategorySelect();
+        } catch {}
+    }
+
+    async function addCategory() {
+        const name = prompt('Category name:');
+        if (!name) return;
+        var body = { name: name };
+        if (user.role === 'Admin' && selectedUserId)
+            body.userId = selectedUserId;
+        try {
+            const res = await fetch('/api/category', {
+                method: 'POST',
+                credentials: 'include',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(body)
+            });
+            if (!res.ok) return;
+            loadCategories();
+        } catch {}
+    }
+
+    async function deleteCategory(id) {
+        if (!confirm('Delete this category?')) return;
+        try {
+            const res = await fetch('/api/category/' + id, {
+                method: 'DELETE',
+                credentials: 'include'
+            });
+            if (!res.ok) return;
+            if (selectedCategoryId === id) {
+                selectedCategoryId = null;
+                loadTasks();
+            }
+            loadCategories();
+        } catch {}
+    }
+
     async function addTask() {
         const text = taskInput.value.trim();
         if (!text) return;
 
-        const body = { title: text, body: '' };
+        const urgentCb = document.getElementById('urgentCheckbox');
+        const isUrgent = urgentCb ? urgentCb.checked : false;
+        const categorySelect = document.getElementById('taskCategorySelect');
+        var catId = categorySelect ? parseInt(categorySelect.value) || null : null;
+        const body = { title: text, body: '', priority: isUrgent ? 'Urgent' : 'Normal', categoryId: catId };
         if (user.role === 'Admin' && selectedUserId)
             body.userId = selectedUserId;
 
@@ -62,6 +118,8 @@
             tasks.unshift(task);
             render();
             taskInput.value = '';
+            if (urgentCb) urgentCb.checked = false;
+            if (categorySelect) categorySelect.value = '';
             taskInput.focus();
             loadSidebarStats();
         } catch {}
@@ -74,6 +132,17 @@
                 credentials: 'include',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ status: completed ? 'Completed' : 'Incompleted' })
+            });
+        } catch {}
+    }
+
+    async function toggleUrgent(id, urgent) {
+        try {
+            await fetch('/api/usertask/' + id, {
+                method: 'PUT',
+                credentials: 'include',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ priority: urgent ? 'Urgent' : 'Normal' })
             });
         } catch {}
     }
@@ -229,19 +298,23 @@
 
     function selectUser(userId) {
         selectedUserId = userId;
+        selectedCategoryId = null;
         var u = users.find(function (x) { return x.id === userId; });
         pageHeading.textContent = u ? u.userName + "'s Tasks" : 'My Tasks';
         loadTasks();
         renderUserList();
+        if (user.role === 'Admin') loadCategories();
     }
 
     function selectMyTasks() {
         selectedUserId = null;
+        selectedCategoryId = null;
         pageHeading.textContent = 'My Tasks';
         loadTasks();
         var allUsers = document.querySelectorAll('.sidebar-user');
         allUsers.forEach(function (el) { el.classList.remove('active'); });
         if (myUserBtn) myUserBtn.classList.add('active');
+        loadCategories();
     }
 
     function renderUserList() {
@@ -290,6 +363,55 @@
         return div.innerHTML;
     }
 
+    function renderCategoryFilter() {
+        var el = document.getElementById('categoryFilterList');
+        if (!el) return;
+        var html = '<div class="category-filter-item' + (selectedCategoryId === null ? ' active' : '') + '" data-cat-id="">All</div>';
+        categories.forEach(function (c) {
+            html += '<div class="category-filter-item' + (selectedCategoryId === c.id ? ' active' : '') + '" data-cat-id="' + c.id + '">' + escapeHtml(c.name) + '</div>';
+        });
+        el.innerHTML = html;
+        el.querySelectorAll('[data-cat-id]').forEach(function (item) {
+            item.addEventListener('click', function () {
+                var id = this.dataset.catId;
+                selectCategory(id ? parseInt(id) : null);
+            });
+        });
+    }
+
+    function renderCategoryList() {
+        var el = document.getElementById('categoryList');
+        if (!el) return;
+        el.innerHTML = categories.map(function (c) {
+            return '<div class="category-manage-item">' +
+                '<span class="category-manage-name">' + escapeHtml(c.name) + '</span>' +
+                '<button class="btn-icon btn-icon-danger" data-delete-cat="' + c.id + '" title="Delete category">&times;</button>' +
+            '</div>';
+        }).join('');
+        el.querySelectorAll('[data-delete-cat]').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                deleteCategory(parseInt(this.dataset.deleteCat));
+            });
+        });
+    }
+
+    function renderCategorySelect() {
+        var el = document.getElementById('taskCategorySelect');
+        if (!el) return;
+        var val = el.value;
+        el.innerHTML = '<option value="">No category</option>';
+        categories.forEach(function (c) {
+            el.innerHTML += '<option value="' + c.id + '">' + escapeHtml(c.name) + '</option>';
+        });
+        el.value = val;
+    }
+
+    function selectCategory(id) {
+        selectedCategoryId = id;
+        loadTasks();
+        renderCategoryFilter();
+    }
+
     function render() {
         taskList.innerHTML = '';
 
@@ -319,6 +441,26 @@
             span.className = 'task-text';
             span.textContent = task.title;
 
+            var urgentBadge = document.createElement('span');
+            urgentBadge.className = 'task-urgent-badge' + (task.priority === 'Urgent' ? '' : ' hidden');
+            urgentBadge.textContent = '\u26A0\uFE0F Срочно';
+
+            var catBadge = document.createElement('span');
+            catBadge.className = 'task-category-badge' + (task.categoryName ? '' : ' hidden');
+            catBadge.textContent = task.categoryName || '';
+
+            var urgentBtn = document.createElement('button');
+            urgentBtn.className = 'task-urgent-btn' + (task.priority === 'Urgent' ? ' urgent' : '');
+            urgentBtn.textContent = '\u26A0';
+            urgentBtn.setAttribute('aria-label', 'Toggle urgent');
+            urgentBtn.addEventListener('click', async function (e) {
+                e.stopPropagation();
+                var newUrgent = task.priority !== 'Urgent';
+                task.priority = newUrgent ? 'Urgent' : 'Normal';
+                await toggleUrgent(task.id, newUrgent);
+                render();
+            });
+
             var expandBtn = document.createElement('button');
             expandBtn.className = 'task-expand-btn';
             expandBtn.textContent = '\u25B8';
@@ -329,7 +471,10 @@
                 this.textContent = isHidden ? '\u25BE' : '\u25B8';
             });
 
+            titleRow.appendChild(urgentBadge);
+            titleRow.appendChild(catBadge);
             titleRow.appendChild(span);
+            titleRow.appendChild(urgentBtn);
             titleRow.appendChild(expandBtn);
 
             var bodyArea = document.createElement('div');
@@ -434,6 +579,7 @@
             if (statsEl) statsEl.textContent = done + '/' + total + ' done';
         }
         if (user.role === 'Admin') loadUsers();
+        loadCategories();
     }
 
     if (myUserBtn) {
@@ -443,6 +589,11 @@
     var addUserBtn = document.getElementById('addUserBtn');
     if (addUserBtn) {
         addUserBtn.addEventListener('click', addUser);
+    }
+
+    var addCategoryBtn = document.getElementById('addCategoryBtn');
+    if (addCategoryBtn) {
+        addCategoryBtn.addEventListener('click', addCategory);
     }
 
     addBtn.addEventListener('click', addTask);

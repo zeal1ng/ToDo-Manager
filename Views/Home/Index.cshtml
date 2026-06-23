@@ -10,6 +10,13 @@
                 <div class="sidebar-user-stats" id="myStats">-</div>
             </div>
         </div>
+        <div class="sidebar-section" id="categorySection">
+            <div class="sidebar-section-title">Categories</div>
+            <div class="category-filter-list" id="categoryFilterList"></div>
+            <div class="sidebar-section-title" style="margin-top:8px;">Manage Categories</div>
+            <div class="category-list" id="categoryList"></div>
+            <button class="btn btn-sidebar" id="addCategoryBtn">+ Add Category</button>
+        </div>
         @if (User.IsInRole("Admin"))
         {
             <div class="sidebar-section">
@@ -26,6 +33,13 @@
 
                 <div class="add-task">
                     <input type="text" id="taskInput" class="task-input" placeholder="Add a new task..." />
+                    <select id="taskCategorySelect" class="task-category-select">
+                        <option value="">No category</option>
+                    </select>
+                    <label class="urgent-checkbox-label">
+                        <input type="checkbox" id="urgentCheckbox" class="urgent-checkbox" />
+                        <span class="urgent-checkbox-text">⚠ Срочно</span>
+                    </label>
                     <button id="addBtn" class="btn btn-add">Add</button>
                 </div>
 

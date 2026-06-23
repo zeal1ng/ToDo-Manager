@@ -12,7 +12,7 @@ using ToDo_Manager.Models;
 namespace ToDo_Manager.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260603093340_Initial-Create")]
+    [Migration("20260617081352_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -68,6 +68,12 @@ namespace ToDo_Manager.Migrations
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Priority")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("text")
+                        .HasDefaultValue("Normal");
 
                     b.Property<string>("Status")
                         .IsRequired()

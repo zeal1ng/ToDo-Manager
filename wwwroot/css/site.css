@@ -166,6 +166,29 @@ main.container {
     box-shadow: 0 0 0 4px rgba(108, 92, 231, 0.12);
 }
 
+.urgent-checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    flex-shrink: 0;
+    user-select: none;
+}
+
+.urgent-checkbox {
+    width: 18px;
+    height: 18px;
+    accent-color: #E74C3C;
+    cursor: pointer;
+}
+
+.urgent-checkbox-text {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    white-space: nowrap;
+}
+
 .btn {
     padding: 14px 24px;
     border: none;
@@ -562,6 +585,90 @@ main.container {
     color: #fff;
 }
 
+/* === Categories === */
+
+.category-filter-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 12px;
+}
+
+.category-filter-item {
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    background: var(--bg-page);
+    color: var(--text-secondary);
+    transition: background 0.15s, color 0.15s;
+}
+
+.category-filter-item:hover {
+    background: var(--border);
+    color: var(--text-primary);
+}
+
+.category-filter-item.active {
+    background: var(--primary);
+    color: #fff;
+}
+
+.category-list {
+    margin-bottom: 8px;
+}
+
+.category-manage-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 8px;
+    border-radius: 8px;
+    margin-bottom: 2px;
+}
+
+.category-manage-item:hover {
+    background: var(--bg-page);
+}
+
+.category-manage-name {
+    font-size: 13px;
+    color: var(--text-primary);
+}
+
+.task-category-select {
+    padding: 14px 18px;
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    font-size: 14px;
+    color: var(--text-primary);
+    background: var(--bg-page);
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.2s;
+    min-width: 140px;
+}
+
+.task-category-select:focus {
+    border-color: var(--primary);
+}
+
+.task-category-badge {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--primary-dark);
+    background: rgba(108, 92, 231, 0.1);
+    padding: 2px 8px;
+    border-radius: 6px;
+    flex-shrink: 0;
+    line-height: 1.4;
+}
+
+.task-category-badge.hidden {
+    display: none;
+}
+
 /* === Task body / description area === */
 
 .task-content {
@@ -573,6 +680,43 @@ main.container {
     display: flex;
     align-items: center;
     gap: 8px;
+}
+
+.task-urgent-badge {
+    font-size: 11px;
+    font-weight: 700;
+    color: #E74C3C;
+    background: rgba(231, 76, 60, 0.1);
+    padding: 2px 8px;
+    border-radius: 6px;
+    flex-shrink: 0;
+    line-height: 1.4;
+}
+
+.task-urgent-badge.hidden {
+    display: none;
+}
+
+.task-urgent-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 2px 6px;
+    font-size: 14px;
+    color: var(--text-muted);
+    border-radius: 4px;
+    flex-shrink: 0;
+    transition: color 0.15s, background 0.15s;
+    line-height: 1;
+}
+
+.task-urgent-btn:hover {
+    color: #E74C3C;
+    background: rgba(231, 76, 60, 0.08);
+}
+
+.task-urgent-btn.urgent {
+    color: #E74C3C;
 }
 
 .task-expand-btn {
@@ -743,6 +887,53 @@ main.container {
     background: rgba(108, 92, 231, 0.7);
 }
 
+.checkbox {
+    margin-top: 5px;
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.checkbox-label {
+    padding-left: 5px;
+}
+
+.checkbox-input {
+    appearance: none;
+    position: relative;
+    width: 30px;
+    height: 30px;
+    background: rgba(108, 92, 231, 0.7);
+    box-shadow: inset 0 0 5px rgb(0 0 0 / 0.2);
+    border-radius: 10px;
+    border: 1px solid #FFFFFF;
+    transition: 500ms;
+}
+
+.checkbox-input::after {
+    content: "\2714";
+    position: absolute;
+    top: -5px;
+    left: 2px;
+    width: 0px;
+    height: 0px;
+    font-size: 26px;
+    transition: 500ms;
+    overflow: hidden;
+}
+
+.checkbox-input:checked::after {
+    width: 30px;
+    height: 30px;
+    transition: 500ms;
+}
+
+.checkbox-input:disabled {
+    background: #ccc;
+    border-color: #ccc;
+}
+
 .stat-dot.completed {
     background: rgba(0, 204, 150, 0.7);
 }
@@ -809,6 +1000,14 @@ main.container {
     .add-task {
         flex-direction: column;
         gap: 10px;
+    }
+
+    .task-category-select {
+        width: 100%;
+    }
+
+    .urgent-checkbox-label {
+        align-self: flex-start;
     }
 
     .task-input {

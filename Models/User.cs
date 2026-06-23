@@ -13,4 +13,5 @@ public class User
     public string PasswordHash { get; set; } = null!;
     public UserRole UserRole { get; set; }
     public List<UserTask> Tasks { get; set; } = new List<UserTask>();
+    public List<Category> Categories { get; set; } = new List<Category>();
 }
